@@ -36,6 +36,9 @@ stdweb = { version = "0.4.18", optional = true }
 [target.wasm32-unknown-unknown.dev-dependencies]
 wasm-bindgen-test = "0.2"
 
+[target.'cfg(target_os = "zkvm")'.dependencies]
+sp1-zkvm = "2.0.0"
+
 [features]
 std = []
 # Enables wasm-bindgen implementation

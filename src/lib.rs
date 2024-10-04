@@ -261,6 +261,8 @@ cfg_if! {
                 #[path = "dummy.rs"] mod imp;
             }
         }
+    } else if #[cfg(target_os = "zkvm")] {
+        #[path = "zkvm.rs"] mod imp;
     } else if #[cfg(feature = "dummy")] {
         #[path = "dummy.rs"] mod imp;
     } else {
