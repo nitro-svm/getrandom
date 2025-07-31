@@ -7,8 +7,14 @@
 //! The function MUST NOT ever write uninitialized bytes into `dest`,
 //! regardless of what value it returns.
 
+mod zkvm;
+
 cfg_if! {
-    if #[cfg(getrandom_backend = "custom")] {
+    if #[cfg(target_arch = "riscv32")] {
+        // Auto-detect SP1 zkVM target
+        pub use zkvm::*;
+    }
+    else if #[cfg(getrandom_backend = "custom")] {
         mod custom;
         pub use custom::*;
     } else if #[cfg(getrandom_backend = "linux_getrandom")] {
